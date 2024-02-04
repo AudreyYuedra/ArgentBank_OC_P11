@@ -1,10 +1,12 @@
 import { Routes, Route } from "react-router-dom"
-import Header from "../components/Header/Header.jsx"
+import Header from "../componentsHeaderHeader.jsx"
 import Home from "../pages/Home.jsx"
 import SignIn from "../pages/SignIn.jsx"
 import User from "../pages/User.jsx"
 import Footer from "../components/Footer/Footer.jsx"
+
 import { createGlobalStyle } from "styled-components"
+import colors from "../../utils/style"
 
 export default App
 
