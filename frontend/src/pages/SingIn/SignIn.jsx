@@ -27,6 +27,9 @@ const FormHeader = styled.div`
 `
 
 function SignIn() {
+   //* eventlistener clic button form
+   // const submit = () => {}
+
    return (
       <Main>
          <Section>
@@ -35,13 +38,13 @@ function SignIn() {
                <p>Sign In</p>
             </FormHeader>
             <form>
-               <Field />
-               <Field />
+               <Field label="Username" content="username" type="text" />
+               <Field label="Password" content="password" type="password" />
 
                {/* case à cocher*/}
                <input>Remember Me</input>
 
-               <Button />
+               <Button event={submit} content="Sign In" width="235px" height="38px" />
             </form>
          </Section>
       </Main>
