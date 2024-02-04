@@ -14,7 +14,10 @@ const Main = styled.div`
    ${mixins.column}
 `
 const Features = styled.div`
-   ${mixins.row}
+   ${mixins.column}
+   @media (min-width: 920px) {
+      flex-direction: row;
+   }
 `
 
 function Home() {
