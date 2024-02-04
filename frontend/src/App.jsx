@@ -5,22 +5,21 @@ import SignIn from "../pages/SignIn.jsx"
 import User from "../pages/User.jsx"
 import Footer from "../components/Footer/Footer.jsx"
 
-import { createGlobalStyle } from "styled-components"
+import styled from "styled-components"
 import colors from "../../utils/style"
 
 export default App
 
-const GlobalStyle = createGlobalStyle`
-  div {
-    backgroung-color: ${colors.bg_primary};
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    text-align: center;
-    color: ${colors.txt_primary};
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }`
+const GlobalStyle = styled.div`
+   backgroung-color: ${colors.bg_primary};
+   font-family: Avenir, Helvetica, Arial, sans-serif;
+   text-align: center;
+   color: ${colors.txt_primary};
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+`
 
 function App() {
    return (
