@@ -41,9 +41,9 @@ function Header() {
    //* Déco user
    const onLogout = () => {
       dispatch(logout())
-		dispatch(reset())
-		dispatch(resetUser())
-		navigate('/')
+      dispatch(reset())
+      dispatch(resetUser())
+      navigate("/")
    }
 
    return (
@@ -55,27 +55,29 @@ function Header() {
          </Link>
 
          <StyledLink>
-            { user ?
-               <li>
-                  <Link to="/User">
-                     <i className="fa fa-user-circle"></i>
-                     {username}
-                  </Link>
-               </li>
-               <li>
-                 <Link to="/SignIn">
-                     <i className="fa fa-sign-out"></i>
-                     Sign Out
-                  </Link>
-               </li>
-               :
+            {user ? (
+               <>
+                  <li>
+                     <Link to="/User">
+                        <i className="fa fa-user-circle"></i>
+                        {username}
+                     </Link>
+                  </li>
+                  <li>
+                     <Link to="/SignIn">
+                        <i className="fa fa-sign-out"></i>
+                        Sign Out
+                     </Link>
+                  </li>
+               </>
+            ) : (
                <li>
                   <Link to="/SignIn">
                      <i class="fa fa-user-circle"></i>
                      Sign In
                   </Link>
                </li>
-            }
+            )}
          </StyledLink>
       </Nav>
    )
