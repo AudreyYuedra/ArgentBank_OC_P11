@@ -1,9 +1,10 @@
+import { useDispatch, useSelector } from "react-redux"
+
 import Link, { useNavigate } from "react-router-dom"
 import Logo from "../../assets/images/argentBankLogo.png"
 
 import styled from "styled-components"
-import mixins from "../../utils/style"
-import { useDispatch, useSelector } from "react-redux"
+import mixins from "../../utils/style.mixins.jsx"
 
 export default Header
 

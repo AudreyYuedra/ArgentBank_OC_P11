@@ -13,6 +13,9 @@ function Button({ content, width, height, event }) {
       font-size: 1.1rem;
       font-weight: bold;
       margin-top: 1rem;
+      &:hover {
+         cursor: pointer;
+      }
    `
    return <Button event={event}>{content}</Button>
 }

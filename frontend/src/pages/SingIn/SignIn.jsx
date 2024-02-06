@@ -3,8 +3,8 @@ import useNavigate from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { toast } from "react-toastify" // système messages
 
-import { login, reset } from "../features/auth/authSlice"
-import { getProfile } from "../features/userProfile/userProfileSlice"
+import { login, reset } from "../api/auth/authSlice"
+import { getProfile } from "../api/userProfile/userProfileSlice"
 import Field from "../../components/Field/Field.jsx"
 import Button from "../../components/Button/Button.jsx"
 
