@@ -16,11 +16,11 @@ const Input = styled.input`
     border: solid 1px ${colors.details_line};
 `
 
-function Field({ label, type, content }) {
+function Field({ label, type, content, value }) {
    return (
       <FieldContent>
          <Label for={content}>{label}</Label>
-         <Input type={type} id={content} name={content} required></Input>
+         <Input type={type} id={content} name={content} value={value} />
       </FieldContent>
    )
 }
