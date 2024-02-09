@@ -1,10 +1,7 @@
-import React from "react"
-import { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
-
-import { login, reset } from "../../api/authentification/authSlice.jsx"
-import { getProfile } from "../../api/userProfile/userProfileSlice.jsx"
+import { useDispatch } from "react-redux"
+import { setSignIn } from "../../redux/reducer/authSlice.jsx"
 
 import Field from "../../components/Field/Field.jsx"
 import Button from "../../components/Button/Button.jsx"
@@ -14,51 +11,52 @@ import "./Login.css"
 export default Login
 
 function Login() {
-   const [formData, setFormData] = useState({
-      email: " ",
-      password: " ",
-   })
-   const { email, password } = formData
-
-   const [remember, setRemember] = useState(false)
-
    const navigate = useNavigate()
    const dispatch = useDispatch() // màj value
 
-   const { user, isError, isSuccess } = useSelector((state) => state.auth)
-
-   useEffect(() => {
-      /*
-      if (isError) {
-         //
-      }
-      if (isSuccess || user) {
-         //
-         })
-         dispatch(getProfile())
-         navigate("/profile")
-      }
-      */
-      dispatch(reset())
-   }, [user, isError, isSuccess, navigate, dispatch])
-
-   //* Changement d'entrées user
-   const change = (event) => {
-      setFormData((prevState) => ({
-         ...prevState,
-         [event.target.name]: event.target.value,
-      }))
-   }
+   //* Stockage valeurs form
+   const [email, setEmail] = useState(" ")
+   const [password, setPassword] = useState(" ")
+   const [errorMessage, setErrorMessage] = useState(" ")
 
    //* Envoie formulaire
-   const submit = (event) => {
+   const submit = async (event) => {
       event.preventDefault()
-      const userData = {
-         email,
-         password,
+      const formData = {
+         email: email,
+         password: password,
       }
-      dispatch(login(userData))
+      //* Envoie requête vers API pour connexion
+      try {
+         const response = await fetch("http://localhost:3001/api/v1/user/login", {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+         })
+         //* Vérif requête réussie
+         if (response.ok) {
+            const responseData = await response.json() // récup données
+            console.log(responseData)
+            const token = responseData.body.token // extract token auth
+            localStorage.setItem("authToken", token) // save token
+            navigate("/User") // redirection
+            dispatch(setSignIn({ token })) // envoie action au store (user connecté)
+         } else {
+            const errorData = await response.json() // récup données erreur
+            console.log("Error : ", response.statusText)
+            setErrorMessage(errorData.message) // màj message erreur
+         }
+      } catch {
+         //* Gestion erreurs imprévues
+         console.log("Error : ", error)
+         setErrorMessage("en error as occured.") // màj message erreur
+      }
    }
+
+   //* Souvenir login
+   const [remember, setRemember] = useState(false)
 
    return (
       <main className="main-login">
@@ -68,9 +66,10 @@ function Login() {
                <h2>Sign In</h2>
             </div>
             <form onSubmit={submit}>
-               <Field label="Username" content="email" type="email" value={email} onChange={change} required />
-               <Field label="Password" content="password" type="password" value={password} onChange={change} required />
+               {errorMessage && <p className="errorMsg">{errorMessage}</p>}
 
+               <Field label="Username" content="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+               <Field label="Password" content="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                {/* case à cocher*/}
                <Field label="Remember me" content="remember" type="checkbox" onChange={() => setRemember(!remember)} checked={remember} />
 
