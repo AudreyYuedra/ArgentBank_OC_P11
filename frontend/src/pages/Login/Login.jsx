@@ -8,32 +8,11 @@ import { getProfile } from "../api/userProfile/userProfileSlice"
 import Field from "../../components/Field/Field.jsx"
 import Button from "../../components/Button/Button.jsx"
 
-import styled from "styled-components"
-import colors from "../../utils/style/colors.jsx"
-import mixins from "../../utils/style/mixins.jsx"
+import "./Login.css"
 
-export default SignIn
+export default Login
 
-const Main = styled.main`
-   background-color: ${colors.bg_secondary};
-   display: flex;
-   justify-content: center;
-`
-const Section = styled.section`
-   box-sizing: border-box;
-   width: 300px;
-   height: 365px;
-   margin-top: 3rem;
-   background-color: ${colors.bg_primary};
-   padding: 2rem;
-`
-const FormHeader = styled.div`
-   height: 75px;
-   ${mixins.column};
-   align-items: center;
-`
-
-function SignIn() {
+function Login() {
    const [formData, setFormData] = useState({
       email: " ",
       password: " ",
@@ -81,12 +60,12 @@ function SignIn() {
    }
 
    return (
-      <Main>
-         <Section>
-            <FormHeader>
+      <main className="main-login">
+         <section className="section-login">
+            <div>
                <i className="fa fa-user-circle"></i>
                <h2>Sign In</h2>
-            </FormHeader>
+            </div>
             <form onSubmit={submit}>
                <Field label="Username" content="email" type="email" value={email} onChange={change} required />
                <Field label="Password" content="password" type="password" value={password} onChange={change} required />
@@ -96,7 +75,7 @@ function SignIn() {
 
                <Button event={submit} content="Sign In" width="235px" height="38px" />
             </form>
-         </Section>
-      </Main>
+         </section>
+      </main>
    )
 }

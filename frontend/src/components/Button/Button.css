@@ -1,0 +1,11 @@
+button {
+  background-color: "00bc77";
+  color: "#FFFFFF";
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+button:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=Button.css.map */

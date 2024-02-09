@@ -1,0 +1,14 @@
+.main-home {
+  display: flex;
+  flex-direction: column;
+}
+.main-home .features {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 920px) {
+  .features {
+    flex-direction: row;
+  }
+}/*# sourceMappingURL=Home.css.map */

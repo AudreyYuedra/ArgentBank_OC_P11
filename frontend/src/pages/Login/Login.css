@@ -1,0 +1,23 @@
+.main-login {
+  background-color: "12002b";
+  display: flex;
+  justify-content: center;
+}
+.main-login .section-login {
+  box-sizing: border-box;
+  width: 300px;
+  height: 365px;
+  margin-top: 3rem;
+  background-color: "#FFFFFF";
+  padding: 2rem;
+}
+.main-login .section-login .from-header {
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-login .section-login .from-header .form {
+  display: flex;
+  flex-direction: column;
+}/*# sourceMappingURL=Login.css.map */

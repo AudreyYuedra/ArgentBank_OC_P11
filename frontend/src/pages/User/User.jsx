@@ -8,31 +8,9 @@ import Field from "../../components/Field/Field.jsx"
 import Button from "../../components/Button/Button.jsx"
 import EventCard from "../../components/EventCard.EventCard.jsx"
 
-import styled from "styled-components"
-import { colors, mixins } from "../../utils/style"
+import "./User.css"
 
 export default User
-
-const Main = styled.main`
-   ${mixins.column};
-   align-item: center;
-   ${colors.bg_secondary};
-`
-const SectionHead = styled.section`
-   height: 138px;
-   ${mixins.column};
-   align-item: center;
-   margin-bottom: 2rem;
-`
-const Title = styled.h2`
-    font-size:
-    font-weight:
-    color: ${colors.bg_primary};
-`
-const Section = styled.section`
-   ${mixins.column};
-   align-item: center;
-`
 
 function User() {
    const [open, setOpen] = useState(" ")
@@ -67,20 +45,20 @@ function User() {
    }
 
    return (
-      <Main>
-         <SectionHead>
+      <main className="main-user">
+         <section className="section-user">
             {!open ? (
                <>
-                  <Title>
+                  <h2 className="title-user">
                      Welcome back
                      <br />
                      {firstName} {lastName} !
-                  </Title>
+                  </h2>
                   <Button width="" height="" content="Edit name" onClick={openChange} />
                </>
             ) : (
                <>
-                  <Title>Edit user info</Title>
+                  <h2 className="title-user">Edit user info</h2>
                   <form onSubmit={submit}>
                      <Field label="User Name :" type="text" content="userName" value={userName} onChange={(event) => setUserName(event.target.value)} required />
                      <Field label="First Name :" type="text" content="firstName" placeholder={firstName} disabled />
@@ -90,13 +68,13 @@ function User() {
                   <Button content="Cancel" width="" height="" style="background-color: red" onClick={openChange} />
                </>
             )}
-         </SectionHead>
+         </section>
 
-         <Section>
+         <section className="section-card">
             <EventCard />
             <EventCard />
             <EventCard />
-         </Section>
-      </Main>
+         </section>
+      </main>
    )
 }

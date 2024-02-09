@@ -1,38 +1,29 @@
+import React from "react"
 import { Routes, Route } from "react-router-dom"
-import Header from "../componentsHeaderHeader.jsx"
-import Home from "../pages/Home.jsx"
-import SignIn from "../pages/SignIn.jsx"
-import User from "../pages/User.jsx"
-import Footer from "../components/Footer/Footer.jsx"
 
-import styled from "styled-components"
-import colors from "../../utils/style"
+import Header from "./components/Header/Header.jsx"
+import Footer from "./components/Footer/Footer.jsx"
+
+import Home from "./pages/Home/Home.jsx"
+import Login from "./pages/Login/Login.js"
+import User from "./pages/User/User.jsx"
+
+import "./utils/style/style.css"
 
 export default App
 
-const GlobalStyle = styled.div`
-   backgroung-color: ${colors.bg_primary};
-   font-family: Avenir, Helvetica, Arial, sans-serif;
-   text-align: center;
-   color: ${colors.txt_primary};
-   margin: 0;
-   display: flex;
-   flex-direction: column;
-   min-height: 100vh;
-`
-
 function App() {
    return (
-      <GlobalStyle>
+      <div className="app">
          <Header />
 
          <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/SignIn" element={<SignIn />} />
+            <Route path="/Login" element={<Login />} />
             <Route path="/User" element={<User />} />
          </Routes>
 
          <Footer />
-      </GlobalStyle>
+      </div>
    )
 }

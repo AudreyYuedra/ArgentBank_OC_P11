@@ -1,0 +1,28 @@
+header {
+  height: 65px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+}
+header .logo {
+  width: 200px;
+  height: 54px;
+}
+header .logo:hover {
+  cursor: pointer;
+}
+header nav {
+  width: 74px;
+  height: 18px;
+}
+header nav li {
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 0.5rem;
+}
+header nav li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}/*# sourceMappingURL=Header.css.map */

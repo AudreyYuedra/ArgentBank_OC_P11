@@ -1,0 +1,18 @@
+@import "../../utils/style/_mixins.scss";
+
+/// MOBILE FIRST ///
+
+.main-home {
+    @include column;
+    & .features {
+        @include column;
+    }
+}
+
+
+/// TABLET + DESKTOP ///
+@media (min-width: 920px) {
+    .features {
+        flex-direction: row;
+    }
+}

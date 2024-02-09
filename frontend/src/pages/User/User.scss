@@ -1,0 +1,21 @@
+@import "../../utils/style/_variables.scss";
+@import "../../utils/style/_mixins.scss";
+
+.main-user {
+    @include column;
+    align-items: center;
+    background-color: $bg_secondary;
+    & .section-user {
+        height: 138px;
+        @include column;
+        align-items: center;
+        margin-bottom: 2rem;
+        & .title-user {
+            color: $bg_primary;
+    }
+   }
+   & .section-card {
+        @include column;
+        align-items: center;
+   }
+}

@@ -1,0 +1,28 @@
+@import "../../utils/style/_mixins.scss";
+
+header {
+    height: 65px;
+    @include rowSpaceBetween;
+    align-items: center;
+    padding: 5px 20px;
+    & .logo {
+        width: 200px;
+        height: 54px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    & nav {
+        width: 74px;
+        height: 18px;
+        & li {
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 0.5rem;
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+}

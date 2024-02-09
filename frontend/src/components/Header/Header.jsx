@@ -1,37 +1,15 @@
+import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import Link, { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Logo from "../../assets/images/argentBankLogo.png"
 
 import styled from "styled-components"
-import mixins from "../../utils/style.mixins.jsx"
+import mixins from "../../utils/style/mixins.jsx"
 
 export default Header
 
-const Nav = styled.nav`
-   height: 65px;
-   ${mixins.rowSpaceBetween}
-   align-items: center;
-   padding: 5px 20px;
-`
-const LogoImg = styled.img`
-   width: 200px;
-   height: 54px;
-   &:hover {
-      cursor: pointer;
-   }
-`
-const StyledLink = styled.ul`
-   width: 74px;
-   height: 18px;
-   font-weight: bold;
-   text-decoration: none;
-   margin-right: 0.5rem;
-   &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-   }
-`
+const StyledLink = styled.ul``
 
 function Header() {
    const { user } = useSelector((state) => state.auth)
@@ -40,46 +18,48 @@ function Header() {
    const navigate = useNavigate()
 
    //* Déco user
-   const onLogout = () => {
+   /*const onLogout = () => {
       dispatch(logout())
       dispatch(reset())
       dispatch(resetUser())
       navigate("/")
-   }
+   } */
 
    return (
-      <Nav>
+      <header>
          <Link to="/">
             <h1>
-               <LogoImg src={Logo} alt="Argent Bank" />
+               <img className="logo" src={Logo} alt="Argent Bank" />
             </h1>
          </Link>
 
-         <StyledLink>
-            {user ? (
-               <>
-                  <li>
-                     <Link to="/User">
-                        <i className="fa fa-user-circle"></i>
-                        {username}
-                     </Link>
-                  </li>
+         <nav>
+            <ul>
+               {user ? (
+                  <>
+                     <li>
+                        <Link to="/User">
+                           <i className="fa fa-user-circle"></i>
+                           {userName}
+                        </Link>
+                     </li>
+                     <li>
+                        <Link to="/SignIn">
+                           <i className="fa fa-sign-out"></i>
+                           Sign Out
+                        </Link>
+                     </li>
+                  </>
+               ) : (
                   <li>
                      <Link to="/SignIn">
-                        <i className="fa fa-sign-out"></i>
-                        Sign Out
+                        <i class="fa fa-user-circle"></i>
+                        Sign In
                      </Link>
                   </li>
-               </>
-            ) : (
-               <li>
-                  <Link to="/SignIn">
-                     <i class="fa fa-user-circle"></i>
-                     Sign In
-                  </Link>
-               </li>
-            )}
-         </StyledLink>
-      </Nav>
+               )}
+            </ul>
+         </nav>
+      </header>
    )
 }

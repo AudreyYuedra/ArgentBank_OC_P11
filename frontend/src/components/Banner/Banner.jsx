@@ -1,4 +1,5 @@
 import img_banner from "../../assets/images/bank-tree.jpeg"
+
 import "./Banner.css"
 
 export default Banner
