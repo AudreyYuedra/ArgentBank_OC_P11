@@ -1,3 +1,5 @@
+import React from "react"
+
 import img_chat from "../../assets/images/icon-chat.png"
 import img_money from "../../assets/images/icon-money.png"
 import img_security from "../../assets/images/icon-security.png"

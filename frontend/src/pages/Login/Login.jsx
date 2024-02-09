@@ -1,10 +1,11 @@
+import React from "react"
 import { useState, useEffect } from "react"
-import useNavigate from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { toast } from "react-toastify" // système messages
 
-import { login, reset } from "../api/auth/authSlice"
-import { getProfile } from "../api/userProfile/userProfileSlice"
+import { login, reset } from "../../api/authentification/authSlice.jsx"
+import { getProfile } from "../../api/userProfile/userProfileSlice.jsx"
+
 import Field from "../../components/Field/Field.jsx"
 import Button from "../../components/Button/Button.jsx"
 
@@ -24,22 +25,22 @@ function Login() {
    const navigate = useNavigate()
    const dispatch = useDispatch() // màj value
 
-   const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+   const { user, isError, isSuccess } = useSelector((state) => state.auth)
 
    useEffect(() => {
-      const customId = "custom-id-yes"
+      /*
       if (isError) {
-         toast.error(message)
+         //
       }
       if (isSuccess || user) {
-         toast.success(message, {
-            toastId: customId,
+         //
          })
          dispatch(getProfile())
          navigate("/profile")
       }
+      */
       dispatch(reset())
-   }, [user, isError, isSuccess, message, navigate, dispatch])
+   }, [user, isError, isSuccess, navigate, dispatch])
 
    //* Changement d'entrées user
    const change = (event) => {

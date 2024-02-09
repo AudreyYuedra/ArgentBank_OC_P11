@@ -1,3 +1,5 @@
+import React from "react"
+
 import img_banner from "../../assets/images/bank-tree.jpeg"
 
 import "./Banner.css"

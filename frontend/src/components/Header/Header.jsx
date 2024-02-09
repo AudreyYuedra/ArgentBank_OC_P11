@@ -4,12 +4,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import Logo from "../../assets/images/argentBankLogo.png"
 
-import styled from "styled-components"
-import mixins from "../../utils/style/mixins.jsx"
+import "./Header.css"
 
 export default Header
-
-const StyledLink = styled.ul``
 
 function Header() {
    const { user } = useSelector((state) => state.auth)

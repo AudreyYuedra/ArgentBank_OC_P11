@@ -1,37 +1,37 @@
+import React from "react"
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { toast } from "react-toastify"
 
-import { resetUser, updateProfile } from "../api/userProfile/userProfileSlice.jsx"
+import { resetUser, updateProfile } from "../../api/userProfile/userProfileSlice.jsx"
 
 import Field from "../../components/Field/Field.jsx"
 import Button from "../../components/Button/Button.jsx"
-import EventCard from "../../components/EventCard.EventCard.jsx"
+import EventMoney from "../../components/EventMoney/EventMoney.jsx"
 
 import "./User.css"
 
 export default User
 
 function User() {
-   const [open, setOpen] = useState(" ")
+   const [open, setOpen] = useState(false)
    const [userName, setUserName] = useState(" ")
 
    const dispatch = useDispatch()
 
-   const { firstName, lastName, isError, isSuccess, message } = useSelector((state) => state.user)
+   const { firstName, lastName, isError, isSuccess } = useSelector((state) => state.user)
 
    useEffect(() => {
-      const customId = "custom-id-yes"
+      /*
       if (isError) {
-         toast.error(message)
+         //
       }
       if (isSuccess) {
-         toast.success(message, {
-            taostId: custom,
+         //
          })
       }
+      */
       dispatch(resetUser())
-   }, [isError, isSuccess, message])
+   }, [isError, isSuccess])
 
    //* Change user name
    const openChange = () => {
@@ -41,7 +41,7 @@ function User() {
       event.preventDefault()
       dispatch(updateProfile({ userName }))
       setUserName(" ")
-      userNameChange(false)
+      openChange(false)
    }
 
    return (
@@ -71,9 +71,9 @@ function User() {
          </section>
 
          <section className="section-card">
-            <EventCard />
-            <EventCard />
-            <EventCard />
+            <EventMoney />
+            <EventMoney />
+            <EventMoney />
          </section>
       </main>
    )

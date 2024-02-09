@@ -1,3 +1,5 @@
+import React from "react"
+
 import Button from "../Button/Button"
 
 import "./EventMoney.css"
@@ -15,7 +17,7 @@ function EventMoney({ title, subtitle, content }) {
             <span className="money">{content}</span>
             <p className="subtitle-account">{subtitle}</p>
          </div>
-         <Button event={transaction} content="Transaction" />
+         <Button /* event={transaction} */ content="Transaction" />
       </article>
    )
 }
