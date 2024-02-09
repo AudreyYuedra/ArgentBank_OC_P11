@@ -1,76 +1,60 @@
-import React from "react"
-import { useState, useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import React, { useEffect } from "react"
+import { useDispatch } from "react-redux"
 
-import { resetUser, updateProfile } from "../../api/userProfile/userProfileSlice.jsx"
+import { setProfile } from "../../redux/reducer/profileSlice.jsx"
 
-import Field from "../../components/Field/Field.jsx"
-import Button from "../../components/Button/Button.jsx"
+import EditName from "../../components/EditName/EditName.jsx"
 import EventMoney from "../../components/EventMoney/EventMoney.jsx"
 
 import "./User.css"
+import "../../utils/style/style.css"
+import EditName from "../../components/EditName/EditName.jsx"
 
 export default User
 
 function User() {
-   const [open, setOpen] = useState(false)
-   const [userName, setUserName] = useState(" ")
-
    const dispatch = useDispatch()
 
-   const { firstName, lastName, isError, isSuccess } = useSelector((state) => state.user)
-
    useEffect(() => {
-      /*
-      if (isError) {
-         //
+      const authToken = localStorage.getItems("authToken") // récup token
+      //* Vérif si token existe
+      if (authToken) {
+         fetchProfileData(authToken)
       }
-      if (isSuccess) {
-         //
-         })
-      }
-      */
-      dispatch(resetUser())
-   }, [isError, isSuccess])
+   })
 
-   //* Change user name
-   const openChange = () => {
-      setOpen(!open)
-   }
-   const submit = (event) => {
-      event.preventDefault()
-      dispatch(updateProfile({ userName }))
-      setUserName(" ")
-      openChange(false)
+   //* Récup données user depuis API
+   async function fetchProfileData(authToken) {
+      // Envoie requête API
+      try {
+         const response = await fetch("http://localhost:3001/api/v1/user/profile", {
+            method: "POST",
+            headers: {
+               accept: "application/json",
+               "Content-Type": "application/json",
+               Authorization: `Bearer ${authToken}`,
+            },
+         })
+         if (response.ok) {
+            const responseData = await response.json()
+            // Dispatch l'action setProfile avec les données de profil récupérées
+            dispatch(setProfile(responseData)) // màj valeur + déclenche rendu
+            console.log(responseData)
+            console.log(responseData.body)
+         } else {
+            console.error("Error :", response.statusText)
+         }
+      } catch (error) {
+         console.error("Error", error)
+      }
    }
 
    return (
       <main className="main-user">
-         <section className="section-user">
-            {!open ? (
-               <>
-                  <h2 className="title-user">
-                     Welcome back
-                     <br />
-                     {firstName} {lastName} !
-                  </h2>
-                  <Button width="" height="" content="Edit name" onClick={openChange} />
-               </>
-            ) : (
-               <>
-                  <h2 className="title-user">Edit user info</h2>
-                  <form onSubmit={submit}>
-                     <Field label="User Name :" type="text" content="userName" value={userName} onChange={(event) => setUserName(event.target.value)} required />
-                     <Field label="First Name :" type="text" content="firstName" placeholder={firstName} disabled />
-                     <Field label="Last Name :" type="text" content="lastName" placeholder={lastName} disabled />
-                     <Button content="Save" width="" height="" />
-                  </form>
-                  <Button content="Cancel" width="" height="" style="background-color: red" onClick={openChange} />
-               </>
-            )}
-         </section>
+         <EditName />
 
          <section className="section-card">
+            <h2 className="hidden">Accounts</h2>
             <EventMoney />
             <EventMoney />
             <EventMoney />
