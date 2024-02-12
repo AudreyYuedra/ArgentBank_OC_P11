@@ -54,9 +54,9 @@ function User() {
 
          <section className="section-card">
             <h2 className="hidden">Accounts</h2>
-            <EventMoney />
-            <EventMoney />
-            <EventMoney />
+            <EventMoney title="Argent Bank Checking (x8349)" subtitle="Available Balance" content="$2,082.79" />
+            <EventMoney title="Argent Bank Savings (x6712)" subtitle="Available Balance" content="$10,928.42" />
+            <EventMoney title="Argent Bank Credit Card (x8349)" subtitle="$184.30" content="Current Balance" />
          </section>
       </main>
    )

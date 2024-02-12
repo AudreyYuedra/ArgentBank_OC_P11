@@ -7,9 +7,6 @@ import "./EventMoney.css"
 export default EventMoney
 
 function EventMoney({ title, subtitle, content }) {
-   //* event transaction
-   // const transaction = () => {}
-
    return (
       <article className="account">
          <div className="content-account">
@@ -17,7 +14,7 @@ function EventMoney({ title, subtitle, content }) {
             <span className="money">{content}</span>
             <p className="subtitle-account">{subtitle}</p>
          </div>
-         <Button /* event={transaction} */ content="Transaction" />
+         <Button content="Transaction" />
       </article>
    )
 }
