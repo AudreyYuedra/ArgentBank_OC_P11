@@ -1,5 +1,4 @@
-import React from "react"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { updateUserName } from "../../redux/reducer/profileSlice"
 
@@ -92,7 +91,7 @@ function EditName() {
                   <br />
                   {userProfile.firstName} {userProfile.lastName} !
                </h2>
-               <Button width="" height="" content="Edit Name" onClick={openEditChange} />
+               <Button width="88px" height="40px" content="Edit Name" onClick={openEditChange} />
             </>
          ) : (
             // Si mode édition activé
@@ -102,9 +101,9 @@ function EditName() {
                   <Field label="User Name :" type="text" content="userName" value={editedUserName} onChange={userNameChange} required />
                   <Field label="First Name :" type="text" content="firstName" placeholder={userProfile.firstName} readOnly />
                   <Field label="Last Name :" type="text" content="lastName" placeholder={userProfile.lastName} readOnly />
-                  <Button content="Save" width="" height="" />
+                  <Button content="Save" width="88px" height="40px" />
                </form>
-               <Button content="Cancel" width="" height="" style="background-color: red" onClick={cancelChange} />
+               <Button content="Cancel" width="88px" height="40px" onClick={cancelChange} />
             </>
          )}
       </section>

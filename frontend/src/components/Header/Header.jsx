@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+import { setSignIn, setSignOut } from "../../redux/reducer/authSlice"
 
-import { Link, useNavigate } from "react-router-dom"
 import Logo from "../../assets/images/argentBankLogo.png"
 
 import "./Header.css"
@@ -9,18 +10,23 @@ import "./Header.css"
 export default Header
 
 function Header() {
-   const { user } = useSelector((state) => state.auth)
-   const { userName } = useSelector((state) => state.user)
-   const dispatch = useDispatch()
-   const navigate = useNavigate()
+   //* Extrait valeur depuis le store
+   const user = useSelector((state) => state.auth.isAuthenticated)
 
-   //* Déco user
-   /*const onLogout = () => {
-      dispatch(logout())
-      dispatch(reset())
-      dispatch(resetUser())
-      navigate("/")
-   } */
+   const dispatch = useDispatch() // màj valeur
+   const userProfile = useSelector((state) => state.user) // extrait user profil
+
+   //* Deco user
+   const userSignOut = () => {
+      dispatch(setSignOut())
+   }
+
+   useEffect(() => {
+      const token = localStorage.getItem("authToken")
+      if (token) {
+         dispatch(setSignIn({ token })) // co user
+      }
+   }, [dispatch])
 
    return (
       <header>
@@ -37,11 +43,11 @@ function Header() {
                      <li>
                         <Link to="/User">
                            <i className="fa fa-user-circle"></i>
-                           {userName}
+                           {userProfile.userName}
                         </Link>
                      </li>
                      <li>
-                        <Link to="/SignIn">
+                        <Link to="/Login" onClick={userSignOut}>
                            <i className="fa fa-sign-out"></i>
                            Sign Out
                         </Link>
@@ -49,7 +55,7 @@ function Header() {
                   </>
                ) : (
                   <li>
-                     <Link to="/SignIn">
+                     <Link to="/Login">
                         <i class="fa fa-user-circle"></i>
                         Sign In
                      </Link>

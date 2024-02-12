@@ -4,10 +4,10 @@ import "./Card.css"
 
 export default Card
 
-function Card({ image, title, content }) {
+function Card({ image, title, content, alt }) {
    return (
       <article className="card-feature">
-         <img src={image} className="feature-icon" />
+         <img src={image} alt={alt} className="feature-icon" />
          <h3>{title}</h3>
          <p>{content}</p>
       </article>
