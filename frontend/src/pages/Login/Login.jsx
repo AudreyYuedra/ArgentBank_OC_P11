@@ -50,7 +50,6 @@ function Login() {
          }
       } catch {
          //* Gestion erreurs imprévues
-         console.log("Error : ", error)
          setErrorMessage("en error as occured.") // màj message erreur
       }
    }

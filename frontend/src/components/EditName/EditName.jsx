@@ -1,11 +1,12 @@
+import React from "react"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { updateUserName } from "../redux/reducer/profileSlice"
+import { updateUserName } from "../../redux/reducer/profileSlice"
 
 import Field from "../../components/Field/Field.jsx"
 import Button from "../../components/Button/Button.jsx"
 
-import "./EditName.css"
+// import "./EditName.css"
 
 export default EditName
 
@@ -23,13 +24,13 @@ function EditName() {
 
    //* Ouverture formulaire d'édition nom
    const openEditChange = () => {
-      setEditing(true)
+      setOpen(true)
    }
 
    //* Fermeture formulaire d'édition + save
    const saveChange = async (event) => {
       event.preventDefault()
-      setEditing(false)
+      setOpen(false)
       try {
          const editedUserNameString = String(editedUserName)
          // Envoie requête API
@@ -73,7 +74,7 @@ function EditName() {
    //* Fermeture formulaire sans save
    const cancelChange = () => {
       setEditedUserName(userProfile.userName) // Rétablit valeur initiale userName
-      setEditing(false)
+      setOpen(false)
    }
 
    // Màj username si changement

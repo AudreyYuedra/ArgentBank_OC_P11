@@ -8,7 +8,6 @@ import EventMoney from "../../components/EventMoney/EventMoney.jsx"
 
 import "./User.css"
 import "../../utils/style/style.css"
-import EditName from "../../components/EditName/EditName.jsx"
 
 export default User
 
