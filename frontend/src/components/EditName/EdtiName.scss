@@ -1,12 +1,16 @@
 @import "../../utils/style/_variables.scss";
 @import "../../utils/style/_mixins.scss";
 
-.main-user {
+
+.section-user {
+    height: 138px;
     @include column;
     align-items: center;
-    background-color: $bg_secondary;
-   & .section-card {
+    margin-bottom: 2rem;
+    & .title-user {
+        color: $bg_primary;
+    }
+    & form {
         @include column;
-        align-items: center;
-   }
+    }
 }
