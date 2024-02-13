@@ -6,6 +6,7 @@ import { setSignIn, setSignOut } from "../../redux/reducer/authSlice"
 import Logo from "../../assets/images/argentBankLogo.png"
 
 import "./Header.css"
+import "../../utils/style/style.css"
 
 export default Header
 
@@ -31,37 +32,28 @@ function Header() {
    return (
       <header>
          <Link to="/">
-            <h1>
-               <img className="logo" src={Logo} alt="Argent Bank" />
-            </h1>
+            <img className="logo" src={Logo} alt="Argent Bank" />
+            <h1 className="hidden">Argent Bank</h1>
          </Link>
 
          <nav>
-            <ul>
-               {user ? (
-                  <>
-                     <li>
-                        <Link to="/User">
-                           <i className="fa fa-user-circle"></i>
-                           {userProfile.userName}
-                        </Link>
-                     </li>
-                     <li>
-                        <Link to="/Login" onClick={userSignOut}>
-                           <i className="fa fa-sign-out"></i>
-                           Sign Out
-                        </Link>
-                     </li>
-                  </>
-               ) : (
-                  <li>
-                     <Link to="/Login">
-                        <i class="fa fa-user-circle"></i>
-                        Sign In
-                     </Link>
-                  </li>
-               )}
-            </ul>
+            {user ? (
+               <>
+                  <Link to="/User" className="link">
+                     <i className="fa fa-user-circle icon-header"></i>
+                     {userProfile.userName}
+                  </Link>
+                  <Link to="/Login" onClick={userSignOut} className="link">
+                     <i className="fa fa-sign-out icon-header"></i>
+                     Sign Out
+                  </Link>
+               </>
+            ) : (
+               <Link to="/Login" className="link">
+                  <i className="fa fa-user-circle icon-header"></i>
+                  Sign In
+               </Link>
+            )}
          </nav>
       </header>
    )

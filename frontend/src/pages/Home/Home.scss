@@ -1,3 +1,4 @@
+@import "../../utils/style/_variables.scss";
 @import "../../utils/style/_mixins.scss";
 
 /// MOBILE FIRST ///
@@ -5,6 +6,7 @@
 .main-home {
     @include column;
     & .features {
+        background-color: $bg_primary;
         @include column;
     }
 }

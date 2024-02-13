@@ -1,16 +1,18 @@
+@import "../../utils/style/_variables.scss";
+
 /// MOBILE FIRST ///
 
 .section-banner {
     width: 100%;
     height: 300px;
-    & .img-banner {
-        background-position: 0 -50px;
-        background-size: cover;
-        background-repeat: no-repeat;
-        position: relative;
-    }
+    //background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    // z-index: 0;
     & .content-banner {
+        background-color: $bg_primary;
         position: relative;
+        z-index: 1;
         top: 2rem;
         width: 200px;
         padding: 2rem;
@@ -23,6 +25,17 @@
         & .text {
             font-size: 0.9rem;
         }
+    }
+    & .img-banner {
+        width: 100%;
+        height: auto;
+        //object-fit: cover;
+        //background-position: 0 -50px;
+        //background-size: cover;
+        //background-repeat: no-repeat;
+        position: relative;
+        top: -210px;
+        //z-index: 0;
     }
 }
 

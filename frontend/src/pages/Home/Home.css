@@ -3,6 +3,7 @@
   flex-direction: column;
 }
 .main-home .features {
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
 }

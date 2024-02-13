@@ -1,28 +1,36 @@
+@import "../../utils/style/_variables.scss";
 @import "../../utils/style/_mixins.scss";
 
 header {
-    height: 65px;
+    background-color: $bg_primary;
     @include rowSpaceBetween;
     align-items: center;
     padding: 5px 20px;
+    position: relative;
+    z-index: 1;
     & .logo {
         width: 200px;
-        height: 54px;
+        max-width: 100%;
         &:hover {
             cursor: pointer;
         }
     }
     & nav {
-        width: 74px;
-        height: 18px;
-        & li {
-            font-weight: bold;
-            text-decoration: none;
-            margin-right: 0.5rem;
+        font-weight: bold;
+        text-decoration: none;
+        margin-right: 0.5rem;
+        & .link {
             &:hover {
                 cursor: pointer;
                 text-decoration: underline;
             }
+            &:visited {
+                color: $txt_primary;
+                // text-decoration: none;
+            }
+        }
+        & .icon-header {
+            margin-right: 5px;
         }
     }
 }

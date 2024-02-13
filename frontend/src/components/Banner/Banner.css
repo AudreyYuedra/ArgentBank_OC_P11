@@ -1,15 +1,13 @@
 .section-banner {
   width: 100%;
   height: 300px;
-}
-.section-banner .img-banner {
-  background-position: 0 -50px;
-  background-size: cover;
   background-repeat: no-repeat;
-  position: relative;
+  position: absolute;
 }
 .section-banner .content-banner {
+  background-color: #FFFFFF;
   position: relative;
+  z-index: 1;
   top: 2rem;
   width: 200px;
   padding: 2rem;
@@ -22,6 +20,12 @@
 }
 .section-banner .content-banner .text {
   font-size: 0.9rem;
+}
+.section-banner .img-banner {
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: -210px;
 }
 
 @media (min-width: 920px) {

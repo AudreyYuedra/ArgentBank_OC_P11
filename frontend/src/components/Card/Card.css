@@ -3,12 +3,12 @@
 }
 .card-feature .feature-icon {
   width: 100px;
-  border: 10px solid "00bc77";
+  border: 10px solid #00bc77;
   border-radius: 50%;
   padding: 1rem;
 }
 .card-feature h3 {
-  color: "222222";
+  color: #222222;
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
