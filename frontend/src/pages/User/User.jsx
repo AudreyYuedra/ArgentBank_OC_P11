@@ -14,14 +14,6 @@ export default User
 function User() {
    const dispatch = useDispatch()
 
-   useEffect(() => {
-      const authToken = localStorage.getItems("authToken") // récup token
-      //* Vérif si token existe
-      if (authToken) {
-         fetchProfileData(authToken)
-      }
-   })
-
    //* Récup données user depuis API
    async function fetchProfileData(authToken) {
       // Envoie requête API
@@ -48,15 +40,23 @@ function User() {
       }
    }
 
+   useEffect(() => {
+      const authToken = localStorage.getItems("authToken") // récup token
+      //* Vérif si token existe
+      if (authToken) {
+         fetchProfileData(authToken)
+      }
+   })
+
    return (
       <main className="main-user">
          <EditName />
 
          <section className="section-card">
             <h2 className="hidden">Accounts</h2>
-            <EventMoney title="Argent Bank Checking (x8349)" subtitle="Available Balance" content="$2,082.79" />
-            <EventMoney title="Argent Bank Savings (x6712)" subtitle="Available Balance" content="$10,928.42" />
-            <EventMoney title="Argent Bank Credit Card (x8349)" subtitle="$184.30" content="Current Balance" />
+            <EventMoney title="Argent Bank Checking (x8349)" content="$2,082.79" subtitle="Available Balance" />
+            <EventMoney title="Argent Bank Savings (x6712)" content="$10,928.42" subtitle="Available Balance" />
+            <EventMoney title="Argent Bank Credit Card (x8349)" content="$184.30" subtitle="Current Balance" />
          </section>
       </main>
    )

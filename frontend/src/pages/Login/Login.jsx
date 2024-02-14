@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { setSignIn } from "../../redux/reducer/authSlice.jsx"
@@ -18,6 +18,7 @@ function Login() {
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
    const [errorMessage, setErrorMessage] = useState("")
+   const [remember, setRemember] = useState(false)
 
    //* Envoie formulaire
    const submit = async (event) => {
@@ -26,6 +27,7 @@ function Login() {
          email: email,
          password: password,
       }
+
       //* Envoie requête vers API pour connexion
       try {
          const response = await fetch("http://localhost:3001/api/v1/user/login", {
@@ -53,9 +55,6 @@ function Login() {
          setErrorMessage("en error as occured.") // màj message erreur
       }
    }
-
-   //* Souvenir login
-   const [remember, setRemember] = useState(false)
 
    return (
       <main className="main-login">
