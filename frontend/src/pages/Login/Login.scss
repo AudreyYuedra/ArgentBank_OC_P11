@@ -2,6 +2,7 @@
 @import "../../utils/style/_mixins.scss";
 
 .main-login {
+    height: 800px;
     background-color: $bg_secondary;
     display: flex;
     justify-content: center;
@@ -12,13 +13,32 @@
         margin-top: 3rem;
         background-color: $bg_primary;
         padding: 2rem;
-        & .from-header {
-            height: 75px;
+        & .form-header {
+            height: 55px;
             @include column;
-            align-items: center;
-            & .form {
-                @include column;
+            margin-bottom: 10px;
+            & i {
+                margin-bottom: 10px;
             }
         }
+        & .form {
+            @include column;
+        }
+        & .check-login {
+            display: flex;
+            margin-top: 20px;
+            & label {
+                margin-left: 5px;
+            }
+        }
+        & .error-login {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        & .btn-login {
+            width: 252px;
+            height: 38px;
+         }
     }
 }

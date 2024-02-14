@@ -1,10 +1,14 @@
 @import "../../utils/style/_variables.scss";
+@import "../../utils/style/_mixins.scss";
 
 .field-content {
-    width: 235px;
     height: 60px;
+    @include column;
+    text-align: left;
+    margin-bottom: 10px;
     & label {
         font-weight: bold;
+        justify-content: left;
     }
     & input {
         width: 100%;

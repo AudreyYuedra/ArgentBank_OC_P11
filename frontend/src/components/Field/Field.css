@@ -1,9 +1,13 @@
 .field-content {
-  width: 235px;
   height: 60px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 10px;
 }
 .field-content label {
   font-weight: bold;
+  justify-content: left;
 }
 .field-content input {
   width: 100%;

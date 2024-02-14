@@ -60,19 +60,22 @@ function Login() {
    return (
       <main className="main-login">
          <section className="section-login">
-            <div>
+            <div className="form-header">
                <i className="fa fa-user-circle"></i>
                <h2>Sign In</h2>
             </div>
             <form onSubmit={submit}>
-               {errorMessage && <p className="errorMsg">{errorMessage}</p>}
+               {errorMessage && <p className="error-login">{errorMessage}</p>}
 
                <Field label="Username" content="email" type="email" onChange={(e) => setEmail(e.target.value)} required />
                <Field label="Password" content="password" type="password" onChange={(e) => setPassword(e.target.value)} required />
-               {/* case à cocher*/}
-               <Field label="Remember me" content="remember" type="checkbox" onChange={() => setRemember(!remember)} checked={remember} />
 
-               <Button content="Sign In" width="235px" height="38px" />
+               <div className="check-login">
+                  <input type="checkbox" id="remember" name="check-remember" onChange={() => setRemember(!remember)} checked={remember} />
+                  <label htmlFor="remember">Remember me</label>
+               </div>
+
+               <Button content="Sign In" className="btn-login" />
             </form>
          </section>
       </main>
