@@ -15,9 +15,9 @@ function Login() {
    const dispatch = useDispatch() // màj value
 
    //* Stockage valeurs form
-   const [email, setEmail] = useState(" ")
-   const [password, setPassword] = useState(" ")
-   const [errorMessage, setErrorMessage] = useState(" ")
+   const [email, setEmail] = useState("")
+   const [password, setPassword] = useState("")
+   const [errorMessage, setErrorMessage] = useState("")
 
    //* Envoie formulaire
    const submit = async (event) => {
@@ -67,12 +67,12 @@ function Login() {
             <form onSubmit={submit}>
                {errorMessage && <p className="errorMsg">{errorMessage}</p>}
 
-               <Field label="Username" content="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-               <Field label="Password" content="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+               <Field label="Username" content="email" type="email" onChange={(e) => setEmail(e.target.value)} required />
+               <Field label="Password" content="password" type="password" onChange={(e) => setPassword(e.target.value)} required />
                {/* case à cocher*/}
                <Field label="Remember me" content="remember" type="checkbox" onChange={() => setRemember(!remember)} checked={remember} />
 
-               <Button event={submit} content="Sign In" width="235px" height="38px" />
+               <Button content="Sign In" width="235px" height="38px" />
             </form>
          </section>
       </main>
