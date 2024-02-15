@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
+import axios from "axios"
 import { setSignIn } from "../../redux/reducer/authSlice.jsx"
 
 import Field from "../../components/Field/Field.jsx"
@@ -27,10 +28,9 @@ function Login() {
          email: email,
          password: password,
       }
-
       //* Envoie requête vers API pour connexion
       try {
-         const response = await fetch("http://localhost:3001/api/v1/user/login", {
+         const response = await axios("http://localhost:3001/api/v1/user/login", {
             method: "POST",
             headers: {
                "Content-Type": "application/json",

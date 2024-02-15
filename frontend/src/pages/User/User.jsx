@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch } from "react-redux"
+import axios from "axios"
 
 import { setProfile } from "../../redux/reducer/profileSlice.jsx"
 
@@ -18,8 +19,8 @@ function User() {
    async function fetchProfileData(authToken) {
       // Envoie requête API
       try {
-         const response = await fetch("http://localhost:3001/api/v1/user/profile", {
-            method: "POST",
+         const response = await axios("http://localhost:3001/api/v1/user/profile", {
+            method: "GET",
             headers: {
                accept: "application/json",
                "Content-Type": "application/json",

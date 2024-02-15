@@ -16,12 +16,13 @@ const authSlice = createSlice({
    name: "auth",
    initialState,
    reducers: {
-      // Réducteur => màj état pour connexion réussie
+      // màj état pour connexion réussie
       setSignIn(state, action) {
          state.token = action.payload.token // màj token
          state.isAuthenticated = true
+         localStorage.setItem("authToken")
       },
-      // Réducteur => màj état pour déconnexion
+      // màj état pour déconnexion
       setSignOut(state) {
          state.token = null // Réinit token
          state.isAuthenticated = false
