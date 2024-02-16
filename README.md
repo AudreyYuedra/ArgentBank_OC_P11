@@ -1,10 +1,3 @@
-# Portfolio - Intégrateur Web
-
-Un site portfolio créé sur une base React.
-
-## Framework et Librairies utilisés
-
--  npm
--  react
--  react-router-dom
--  styled-components
+# Erreur via VSC :
+# Impossible de suppr cette branch sans suppr ce repo
+# Ne pas tenir compte de cette branch
