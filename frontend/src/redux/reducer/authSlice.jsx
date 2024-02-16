@@ -20,7 +20,7 @@ const authSlice = createSlice({
       setSignIn(state, action) {
          state.token = action.payload.token // màj token
          state.isAuthenticated = true
-         localStorage.setItem("authToken")
+         localStorage.setItem("authToken", true)
       },
       // màj état pour déconnexion
       setSignOut(state) {

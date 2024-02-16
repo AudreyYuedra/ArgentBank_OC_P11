@@ -28,23 +28,26 @@ function Login() {
          email: email,
          password: password,
       }
+      console.log(formData)
       //* Envoie requête vers API pour connexion
       try {
-         const response = await axios("http://localhost:3001/api/v1/user/login", {
-            method: "POST",
+         const response = await axios.post("http://localhost:3001/api/v1/user/login", formData, {
             headers: {
                "Content-Type": "application/json",
             },
-            body: JSON.stringify(formData),
          })
-         //* Vérif requête réussie
-         if (response.ok) {
+         console.log(response)
+         //* Vérif requête réussie  ==> PROB IF !!!
+         if (response.status === 200) {
+            console.log("test")
             const responseData = await response.json() // récup données
-            console.log(responseData)
+            console.log("statut : ", responseData)
             const token = responseData.body.token // extract token auth
+            console.log(token)
             localStorage.setItem("authToken", token) // save token
-            navigate("/User") // redirection
+            console.log(localStorage)
             dispatch(setSignIn({ token })) // envoie action au store (user connecté)
+            navigate("/User") // redirection
          } else {
             const errorData = await response.json() // récup données erreur
             console.log("Error : ", response.statusText)
@@ -52,7 +55,7 @@ function Login() {
          }
       } catch {
          //* Gestion erreurs imprévues
-         setErrorMessage("en error as occured.") // màj message erreur
+         setErrorMessage("An error as occured.") // màj message erreur
       }
    }
 

@@ -19,19 +19,18 @@ function User() {
    async function fetchProfileData(authToken) {
       // Envoie requête API
       try {
-         const response = await axios("http://localhost:3001/api/v1/user/profile", {
-            method: "GET",
+         const response = await axios.post("http://localhost:3001/api/v1/user/profile", {
             headers: {
                accept: "application/json",
                "Content-Type": "application/json",
                Authorization: `Bearer ${authToken}`,
             },
          })
-         if (response.ok) {
+         console.log(response)
+         if (response === 200) {
             const responseData = await response.json()
-            // Dispatch l'action setProfile avec les données de profil récupérées
-            dispatch(setProfile(responseData)) // màj valeur + déclenche rendu
             console.log(responseData)
+            dispatch(setProfile(responseData)) // màj valeur + déclenche rendu
             console.log(responseData.body)
          } else {
             console.error("Error :", response.statusText)
@@ -42,7 +41,7 @@ function User() {
    }
 
    useEffect(() => {
-      const authToken = localStorage.getItems("authToken") // récup token
+      const authToken = localStorage.getItem("authToken") // récup token
       //* Vérif si token existe
       if (authToken) {
          fetchProfileData(authToken)
