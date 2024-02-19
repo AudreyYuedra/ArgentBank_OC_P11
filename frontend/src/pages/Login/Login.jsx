@@ -39,19 +39,18 @@ function Login() {
          console.log(response)
          //* Vérif requête réussie  ==> PROB IF !!!
          if (response.status === 200) {
-            console.log("test")
-            const responseData = await response.json() // récup données
+            console.log("Response object : ", response)
+            const responseData = response.data // récup données
             console.log("statut : ", responseData)
             const token = responseData.body.token // extract token auth
-            console.log(token)
+            console.log("login authToken : ", token)
             localStorage.setItem("authToken", token) // save token
             console.log(localStorage)
             dispatch(setSignIn({ token })) // envoie action au store (user connecté)
             navigate("/User") // redirection
          } else {
-            const errorData = await response.json() // récup données erreur
             console.log("Error : ", response.statusText)
-            setErrorMessage(errorData.message) // màj message erreur
+            setErrorMessage(response.statusText) // màj message erreur
          }
       } catch {
          //* Gestion erreurs imprévues

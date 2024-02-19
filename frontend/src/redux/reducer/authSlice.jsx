@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 //* Vérif si token auth présent dans LocalStorage
 const checkToken = () => {
+   console.log("checkToken authSlice : ", localStorage.getItem("authToken"))
    return localStorage.getItem("authToken") || null
 }
 
@@ -19,8 +20,9 @@ const authSlice = createSlice({
       // màj état pour connexion réussie
       setSignIn(state, action) {
          state.token = action.payload.token // màj token
+         console.log("authSlice state.token : ", state.token)
          state.isAuthenticated = true
-         localStorage.setItem("authToken", true)
+         localStorage.getItem("localStorage authToken", state.token)
       },
       // màj état pour déconnexion
       setSignOut(state) {
