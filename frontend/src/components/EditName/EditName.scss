@@ -6,9 +6,12 @@
     height: 138px;
     @include column;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
     & .title-user {
         color: $bg_primary;
+    }
+    & .modal {
+        background-color: $bg_primary;
     }
     & form {
         @include column;

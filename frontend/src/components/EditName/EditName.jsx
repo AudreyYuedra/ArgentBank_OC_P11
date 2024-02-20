@@ -6,7 +6,7 @@ import axios from "axios"
 import Field from "../../components/Field/Field.jsx"
 import Button from "../../components/Button/Button.jsx"
 
-// import "./EditName.css"  correc nom fichier
+import "./EditName.css"
 
 export default EditName
 
@@ -107,13 +107,15 @@ function EditName() {
             //* Mode édition activé
             <>
                <h2 className="title-user">Edit user info</h2>
-               <form onSubmit={saveChange}>
-                  <Field label="User Name :" type="text" content="userName" onChange={(event) => setEditedUserName(event.target.value)} required />
-                  <Field label="First Name :" type="text" content="firstName" placeholder={userProfile.firstName} readOnly />
-                  <Field label="Last Name :" type="text" content="lastName" placeholder={userProfile.lastName} readOnly />
-                  <Button content="Save" width="88px" height="40px" />
-               </form>
-               <Button content="Cancel" width="88px" height="40px" onClick={cancelChange} />
+               <div className="modal">
+                  <form onSubmit={saveChange}>
+                     <Field label="User Name :" type="text" content="userName" onChange={(event) => setEditedUserName(event.target.value)} required />
+                     <Field label="First Name :" type="text" content="firstName" placeholder={userProfile.firstName} readOnly />
+                     <Field label="Last Name :" type="text" content="lastName" placeholder={userProfile.lastName} readOnly />
+                     <Button content="Save" width="88px" height="40px" />
+                  </form>
+                  <Button content="Cancel" width="88px" height="40px" onClick={cancelChange} />
+               </div>
             </>
          )}
       </section>

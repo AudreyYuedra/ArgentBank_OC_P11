@@ -5,15 +5,14 @@
 
 .account {
     width: 80%;
-    height: 132px;
+    height: auto; //132px;
     background-color: $bg_primary;
-    @include rowSpaceBetween;
+    @include column;
     align-items: center;
     box-sizing: border-box;
     border: 1px solid black;
-    // margin: 0 auto;
-    padding: 1.5rem;
     margin-bottom: 2rem;
+    padding: 1rem;
     & .content-account {
         @include column;
         justify-content: center;
@@ -33,5 +32,7 @@
 @media (min-width: 720px) {
     .account {
         flex-direction: row;
+        @include rowSpaceBetween;
+        padding: 1.5rem;
     }
 }

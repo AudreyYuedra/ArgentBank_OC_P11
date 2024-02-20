@@ -5,7 +5,7 @@ header {
     background-color: $bg_primary;
     @include rowSpaceBetween;
     align-items: center;
-    padding: 5px 20px;
+    padding: 5px; //20px;
     position: relative;
     z-index: 1;
     & .logo {
@@ -17,20 +17,30 @@ header {
     }
     & nav {
         font-weight: bold;
-        text-decoration: none;
-        margin-right: 0.5rem;
         & .link {
+            margin-right: 0.5rem;
+            text-decoration: none;
             &:hover {
                 cursor: pointer;
                 text-decoration: underline;
             }
             &:visited {
                 color: $txt_primary;
-                // text-decoration: none;
+                text-decoration: none;
             }
         }
         & .icon-header {
             margin-right: 5px;
+        }
+    }
+}
+
+@media (max-width: 370px) {
+    nav {
+        @include column;
+        justify-content: center;
+        & .link {
+            margin-bottom: 2px;
         }
     }
 }

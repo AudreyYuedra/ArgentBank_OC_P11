@@ -41,7 +41,7 @@ function Header() {
                <>
                   <Link to="/User" className="link">
                      <i className="fa fa-user-circle icon-header"></i>
-                     {userProfile.userName}
+                     {userProfile.firstName}
                   </Link>
                   <Link to="/Login" onClick={userSignOut} className="link">
                      <i className="fa fa-sign-out icon-header"></i>

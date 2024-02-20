@@ -6,6 +6,7 @@
     align-items: center;
     background-color: $bg_secondary;
    & .section-card {
+     width: 100%;
         @include column;
         align-items: center;
    }

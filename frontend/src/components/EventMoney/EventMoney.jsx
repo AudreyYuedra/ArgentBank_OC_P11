@@ -14,7 +14,7 @@ function EventMoney({ title, subtitle, content }) {
             <span className="money">{content}</span>
             <p className="subtitle-account">{subtitle}</p>
          </div>
-         <Button content="Transaction" />
+         <Button content="View Transactions" />
       </article>
    )
 }
