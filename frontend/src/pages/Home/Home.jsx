@@ -1,8 +1,8 @@
 import React from "react"
 
-import img_chat from "../../assets/images/icon-chat.png"
-import img_money from "../../assets/images/icon-money.png"
-import img_security from "../../assets/images/icon-security.png"
+import img_chat from "../../assets/images/icon-chat.webp"
+import img_money from "../../assets/images/icon-money.webp"
+import img_security from "../../assets/images/icon-security.webp"
 
 import Banner from "../../components/Banner/Banner.jsx"
 import Card from "../../components/Card/Card.jsx"

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { setSignIn, setSignOut } from "../../redux/reducer/authSlice"
 
-import Logo from "../../assets/images/argentBankLogo.png"
+import Logo from "../../assets/images/argentBankLogo.webp"
 
 import "./Header.css"
 import "../../utils/style/style.css"
