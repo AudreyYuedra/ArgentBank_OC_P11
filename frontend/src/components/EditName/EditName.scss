@@ -3,15 +3,20 @@
 
 
 .section-user {
-    height: 138px;
+    width: 100%;
+    height: auto; //138px;
     @include column;
     align-items: center;
-    margin-top: 2rem;
+    margin: 2rem 0;
     & .title-user {
         color: $bg_primary;
+        margin-bottom: 5px;
     }
     & .modal {
+        width: 30%;
+        height: auto;
         background-color: $bg_primary;
+        padding: 10px;
     }
     & form {
         @include column;
