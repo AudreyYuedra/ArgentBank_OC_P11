@@ -4,6 +4,10 @@ import "./Button.css"
 
 export default Button
 
-function Button({ content, event }) {
-   return <button event={event}>{content}</button>
+function Button({ content, event, onClick }) {
+   return (
+      <button event={event} onClick={onClick}>
+         {content}
+      </button>
+   )
 }

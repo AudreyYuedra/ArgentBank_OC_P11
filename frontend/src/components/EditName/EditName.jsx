@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setProfile } from "../../redux/reducer/profileSlice"
 import axios from "axios"
@@ -8,28 +8,13 @@ import Button from "../../components/Button/Button.jsx"
 
 import "./EditName.css"
 
-export default EditName
-
 function EditName() {
    const dispatch = useDispatch()
    const userProfile = useSelector((state) => state.user) // récup données user
    const userToken = useSelector((state) => state.auth.token) // récup token
 
-   const [close, setClose] = useState(true) // form fermé par défaut
+   const [isOpen, setIsOpen] = useState(false) // form fermé par défaut
    const [editedUserName, setEditedUserName] = useState("") // définit état username
-
-   //* Ouverture formulaire d'édition nom
-   /* const openEditChange = () => {
-      // setClose(!close)
-      console.log("vous avez cliqué !")
-   } */
-
-   //* Fermeture formulaire sans save
-   const cancelChange = () => {
-      // setEditedUserName(userProfile.userName) // Rétablit valeur initiale userName
-      setClose(close)
-      console.log("vous avez encore cliqué !")
-   }
 
    //* Fermeture formulaire d'édition + save
    const saveChange = async (event) => {
@@ -55,7 +40,7 @@ function EditName() {
             const responseData = response.data
             dispatch(setProfile(editedUserName)) // màj username dans store
             console.log("Username was successfully updated :", responseData)
-            setClose(close)
+            setIsOpen(false)
          } else {
             //* Gestion spécifique pour code erreur 401
             if (response.status === 401) {
@@ -78,15 +63,9 @@ function EditName() {
       }
    }
 
-   /* useEffect(() => {
-      if (close && "click") {
-         openEditChange()
-      }
-   }, []) */
-
    return (
       <section className="section-user">
-         {close ? (
+         {!isOpen ? (
             //* Mode édition désactivé
             <>
                <h2 className="title-user">
@@ -99,7 +78,7 @@ function EditName() {
                   height="40px"
                   content="Edit Name"
                   onClick={() => {
-                     setClose(!close)
+                     setIsOpen(true)
                   }}
                />
             </>
@@ -114,10 +93,19 @@ function EditName() {
                      <Field label="Last Name :" type="text" content="lastName" placeholder={userProfile.lastName} readOnly />
                      <Button content="Save" width="88px" height="40px" />
                   </form>
-                  <Button content="Cancel" width="88px" height="40px" onClick={cancelChange} />
+                  <Button
+                     content="Cancel"
+                     width="88px"
+                     height="40px"
+                     onClick={() => {
+                        setIsOpen(false)
+                     }}
+                  />
                </div>
             </>
          )}
       </section>
    )
 }
+
+export default EditName
