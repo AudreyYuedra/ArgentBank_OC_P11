@@ -22,11 +22,11 @@ const profileSlice = createSlice({
          state.email = action.payload.body.email
       },
       // Action => màj valeur champ 'userName'
-      /* updateUserName: (state, action) => {
+      updateUserName: (state, action) => {
          state.userName = action.payload
-      }, */
+      },
    },
 })
 
-export const { setProfile /* updateUserName */ } = profileSlice.actions
+export const { setProfile, updateUserName } = profileSlice.actions
 export default profileSlice.reducer

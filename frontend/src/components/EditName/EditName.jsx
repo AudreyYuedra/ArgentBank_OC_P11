@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setProfile } from "../../redux/reducer/profileSlice"
+import { updateUserName } from "../../redux/reducer/profileSlice"
 import axios from "axios"
 
 import Field from "../../components/Field/Field.jsx"
@@ -14,14 +14,15 @@ function EditName() {
    const userToken = useSelector((state) => state.auth.token) // récup token
 
    const [isOpen, setIsOpen] = useState(false) // form fermé par défaut
-   const [editedUserName, setEditedUserName] = useState("") // définit état username
+   const [editedUserName, setEditedUserName] = useState(userProfile.userName) // définit état username
 
    //* Fermeture formulaire d'édition + save
    const saveChange = async (event) => {
       event.preventDefault()
       try {
          const editedUserNameString = String(editedUserName)
-         // Envoie requête API
+         console.log("editedUserNameString : ", editedUserNameString)
+         //* Envoie requête API
          const response = axios.put(
             "http://localhost:3001/api/v1/user/profile",
             {},
@@ -31,29 +32,29 @@ function EditName() {
                   "Content-Type": "application/json",
                   Authorization: `Bearer ${userToken}`,
                },
-               body: JSON.stringify({
+               body: {
                   userName: editedUserNameString,
-               }),
+               },
             }
          )
+         console.log("Editname response : ", response)
          if (response.status === 200) {
-            const responseData = response.data
-            dispatch(setProfile(editedUserName)) // màj username dans store
-            console.log("Username was successfully updated :", responseData)
+            console.log("Response object : ", response)
+            //const responseData = response.data
+            //console.log("EditName response.data : ", response.data)
+            dispatch(updateUserName(userProfile.userName)) // màj username dans store
+            //console.log("Username was successfully updated :", responseData)
             setIsOpen(false)
          } else {
-            //* Gestion spécifique pour code erreur 401
             if (response.status === 401) {
                const errorData = response.data
                console.error("Error 401 - editName : ", errorData.message)
-
-               //* Gestion spécifique pour code erreur 400
-            } else if (response.status === 400) {
+            }
+            if (response.status === 400) {
                const errorData = response.data
                console.error("Error 400 - editName : ", errorData)
-
-               //* Gestion spécifique pour autre erreur (500)
             } else {
+               //* Gestion spécifique pour autre erreur
                console.error("Error - editName : ", response.statusText)
             }
          }
@@ -63,6 +64,10 @@ function EditName() {
       }
    }
 
+   useEffect(() => {
+      setEditedUserName(userProfile.userName) // màj username pour userProfile
+   }, [userProfile.userName])
+
    return (
       <section className="section-user">
          {!isOpen ? (
@@ -71,7 +76,14 @@ function EditName() {
                <h2 className="title-user">
                   Welcome back
                   <br />
-                  {userProfile.firstName} {userProfile.lastName} !
+                  {userProfile.userName === "" ? (
+                     <>
+                        {userProfile.firstName} {userProfile.lastName}
+                     </>
+                  ) : (
+                     <>{userProfile.userName}</>
+                  )}
+                  !
                </h2>
                <Button
                   width="88px"
@@ -88,9 +100,9 @@ function EditName() {
                <h2 className="title-user">Edit user info</h2>
                <div className="modal">
                   <form onSubmit={saveChange}>
-                     <Field label="User Name :" type="text" content="userName" onChange={(event) => setEditedUserName(event.target.value)} required />
-                     <Field label="First Name :" type="text" content="firstName" placeholder={userProfile.firstName} readOnly />
-                     <Field label="Last Name :" type="text" content="lastName" placeholder={userProfile.lastName} readOnly />
+                     <Field label="User Name :" type="text" content="userName" onChange={(event) => setEditedUserName(event.target.value)} />
+                     <Field label="First Name :" type="text" content="firstName" placeholder={userProfile.firstName} />
+                     <Field label="Last Name :" type="text" content="lastName" placeholder={userProfile.lastName} />
                      <Button content="Save" width="88px" height="40px" />
                   </form>
                   <Button
