@@ -85,8 +85,6 @@ function EditName() {
                   !
                </h2>
                <Button
-                  width="88px"
-                  height="40px"
                   content="Edit Name"
                   onClick={() => {
                      setIsOpen(true)
@@ -106,8 +104,7 @@ function EditName() {
                   </form>
                   <Button
                      content="Cancel"
-                     width="88px"
-                     height="40px"
+                     style={{ backgroundColor: "red" }}
                      onClick={() => {
                         setIsOpen(false)
                      }}

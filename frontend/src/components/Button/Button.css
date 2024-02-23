@@ -5,7 +5,6 @@ button {
   font-size: 1.1rem;
   font-weight: bold;
   margin-top: 1rem;
-  text-decoration: underline;
   border: none;
 }
 button:hover {

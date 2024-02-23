@@ -76,7 +76,7 @@ function Login() {
                   <label htmlFor="remember">Remember me</label>
                </div>
 
-               <Button content="Sign In" className="btn-login" />
+               <Button style={{ textDecoration: "underline" }} content="Sign In" className="btn-login" />
             </form>
          </section>
       </main>
