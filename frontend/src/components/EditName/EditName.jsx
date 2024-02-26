@@ -24,15 +24,14 @@ function EditName() {
          //* Envoie requête API
          const response = await axios.put(
             "http://localhost:3001/api/v1/user/profile",
-            {},
+            {
+               userName: editedUserName,
+            },
             {
                headers: {
                   accept: "application/json",
                   "Content-Type": "application/json",
                   Authorization: `Bearer ${userToken}`,
-               },
-               body: {
-                  userName: editedUserName,
                },
             }
          )
@@ -41,7 +40,7 @@ function EditName() {
             console.log("Response object : ", response)
             const responseData = response.data
             console.log("EditName response.data : ", response.data)
-            dispatch(updateUserName(editedUserName.userName)) // màj username dans store
+            dispatch(updateUserName(editedUserName)) // màj username dans store
             console.log("Username was successfully updated :", responseData)
             setIsOpen(false)
          } else {
@@ -65,6 +64,7 @@ function EditName() {
 
    useEffect(() => {
       setEditedUserName(userProfile.userName) // màj username pour userProfile
+      console.log("useEffect object : ", userProfile.userName)
    }, [userProfile.userName])
 
    return (
@@ -75,7 +75,7 @@ function EditName() {
                <h2 className="title-user">
                   Welcome back
                   <br />
-                  {!editedUserName ? (
+                  {!userProfile.userName ? (
                      <>
                         {userProfile.firstName} {userProfile.lastName}
                      </>
