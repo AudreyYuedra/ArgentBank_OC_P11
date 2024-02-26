@@ -1,0 +1,26 @@
+.main-error {
+  height: 85dvh;
+  width: 100%;
+  background-color: #12002b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-error .container-error {
+  width: 25%;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #FFFFFF;
+  padding: 15px;
+}
+.main-error .container-error .title-error {
+  color: #00bc77;
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+.main-error .container-error .error {
+  color: #2c3e50;
+  font-size: 16px;
+}/*# sourceMappingURL=Error.css.map */
