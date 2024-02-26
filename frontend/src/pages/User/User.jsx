@@ -18,7 +18,6 @@ function User() {
    //* Récup données user depuis API
    async function fetchProfileData(authToken) {
       // Envoie requête API
-      console.log("authToken fetchProfileData : ", authToken)
       try {
          const response = await axios.post(
             "http://localhost:3001/api/v1/user/profile",
@@ -31,12 +30,9 @@ function User() {
                },
             }
          )
-         console.log(response)
          if (response.status === 200) {
             const responseData = response.data
-            console.log(responseData)
             dispatch(setProfile(responseData)) // màj valeur + déclenche rendu
-            console.log(responseData)
          } else {
             console.error("Error response : ", response.statusText)
          }
@@ -48,7 +44,6 @@ function User() {
    useEffect(() => {
       const authToken = localStorage.getItem("authToken") // récup token
       //* Vérif si token existe
-      console.log("useEffect fetchProfileData: ", authToken)
       if (authToken) {
          fetchProfileData(authToken)
       }

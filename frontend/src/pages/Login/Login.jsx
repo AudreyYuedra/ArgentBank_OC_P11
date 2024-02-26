@@ -28,7 +28,6 @@ function Login() {
          email: email,
          password: password,
       }
-      console.log(formData)
       //* Envoie requête vers API pour connexion
       try {
          const response = await axios.post("http://localhost:3001/api/v1/user/login", formData, {
@@ -36,20 +35,14 @@ function Login() {
                "Content-Type": "application/json",
             },
          })
-         console.log(response)
          //* Vérif requête réussie  ==> PROB IF !!!
          if (response.status === 200) {
-            console.log("Response object : ", response)
             const responseData = response.data // récup données
-            console.log("statut : ", responseData)
             const token = responseData.body.token // extract token auth
-            console.log("login authToken : ", token)
             localStorage.setItem("authToken", token) // save token
-            console.log(localStorage)
             dispatch(setSignIn({ token })) // envoie action au store (user connecté)
             navigate("/User") // redirection
          } else {
-            console.log("Error : ", response.statusText)
             setErrorMessage(response.statusText) // màj message erreur
          }
       } catch {

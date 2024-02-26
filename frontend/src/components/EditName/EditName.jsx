@@ -20,7 +20,6 @@ function EditName() {
    const saveChange = async (event) => {
       event.preventDefault()
       try {
-         console.log("editedUserName : ", editedUserName)
          //* Envoie requête API
          const response = await axios.put(
             "http://localhost:3001/api/v1/user/profile",
@@ -35,13 +34,9 @@ function EditName() {
                },
             }
          )
-         console.log("Editname response : ", response)
          if (response.status === 200) {
-            console.log("Response object : ", response)
             const responseData = response.data
-            console.log("EditName response.data : ", response.data)
             dispatch(updateUserName(editedUserName)) // màj username dans store
-            console.log("Username was successfully updated :", responseData)
             setIsOpen(false)
          } else {
             if (response.status === 401) {
